@@ -95,17 +95,6 @@ namespace tmpBinOctHexDec
                 }
             }
         }
-        
-        private void txtEncID_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(Char.IsDigit(e.KeyChar)))
-            {
-                if (e.KeyChar != (char)Keys.Back)
-                {
-                    e.Handled = true;
-                }
-            }
-        }
                 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -114,57 +103,134 @@ namespace tmpBinOctHexDec
 
         private void All_TextChanged(object sender, EventArgs e)
         {
-            TextBox tb = (TextBox)sender;
-            bool changeBin = txtBin.Focused;
-            bool changeOct = txtOct.Focused;
-            bool changeHex = txtHex.Focused;
-            bool changeDec = txtDec.Focused;
+            TextBox tb_1 = (TextBox)sender;
+            TextBox tb_2 = (TextBox)sender;
+            bool changeBin = txtBin_1.Focused;
+            bool changeOct = txtOct_1.Focused;
+            bool changeHex = txtHex_1.Focused;
+            bool changeDec = txtDec_1.Focused;
 
-            switch (tb.Name)
+            bool changeBin_2 = txtBin_2.Focused;
+            bool changeOct_2 = txtOct_2.Focused;
+            bool changeHex_2 = txtHex_2.Focused;
+            bool changeDec_2 = txtDec_2.Focused;
+
+            switch (tb_1.Name)
             {
-                case "txtBin":
+                case "txtBin_1":
                     {
                         
-                        if (!changeOct) txtOct.Text = Conv(2, 8, tb.Text);
-                        if (!changeHex) txtHex.Text = Conv(2, 16, tb.Text);
-                        if (!changeDec) txtDec.Text = Conv(2, 10, tb.Text);
+                        if (!changeOct) txtOct_1.Text = Conv(2, 8, tb_1.Text);
+                        if (!changeHex) txtHex_1.Text = Conv(2, 16, tb_1.Text);
+                        if (!changeDec) txtDec_1.Text = Conv(2, 10, tb_1.Text);
 
                     }; break;
-                case "txtOct":
+                case "txtOct_1":
                     {
                         
-                        if (!changeBin) txtBin.Text = Conv(8, 2, tb.Text);
-                        if (!changeHex) txtHex.Text = Conv(8, 16, tb.Text);
-                        if (!changeDec) txtDec.Text = Conv(8, 10, tb.Text);
+                        if (!changeBin) txtBin_1.Text = Conv(8, 2, tb_1.Text);
+                        if (!changeHex) txtHex_1.Text = Conv(8, 16, tb_1.Text);
+                        if (!changeDec) txtDec_1.Text = Conv(8, 10, tb_1.Text);
 
                     }; break;
-                case "txtHex":
+                case "txtHex_1":
                     {
                         
-                        if (!changeBin) txtBin.Text = Conv(16, 2, tb.Text);
-                        if (!changeOct) txtOct.Text = Conv(16, 8, tb.Text);
-                        if (!changeDec) txtDec.Text = Conv(16, 10, tb.Text);
+                        if (!changeBin) txtBin_1.Text = Conv(16, 2, tb_1.Text);
+                        if (!changeOct) txtOct_1.Text = Conv(16, 8, tb_1.Text);
+                        if (!changeDec) txtDec_1.Text = Conv(16, 10, tb_1.Text);
 
                     }; break;
-                case "txtDec":
+                case "txtDec_1":
                     {
          
-                        if (!changeBin) txtBin.Text = Conv(10, 2, tb.Text);
-                        if (!changeHex) txtHex.Text = Conv(10, 16, tb.Text);
-                        if (!changeOct) txtOct.Text = Conv(10, 8, tb.Text);
+                        if (!changeBin) txtBin_1.Text = Conv(10, 2, tb_1.Text);
+                        if (!changeHex) txtHex_1.Text = Conv(10, 16, tb_1.Text);
+                        if (!changeOct) txtOct_1.Text = Conv(10, 8, tb_1.Text);
+
+                    }; break;
+
+            }
+            switch (tb_2.Name)
+            {
+                case "txtBin_2":
+                    {
+
+                        if (!changeOct_2) txtOct_2.Text = Conv(2, 8, tb_2.Text);
+                        if (!changeHex_2) txtHex_2.Text = Conv(2, 16, tb_2.Text);
+                        if (!changeDec_2) txtDec_2.Text = Conv(2, 10, tb_2.Text);
+
+                    }; break;
+                case "txtOct_2":
+                    {
+
+                        if (!changeBin_2) txtBin_2.Text = Conv(8, 2, tb_2.Text);
+                        if (!changeHex_2) txtHex_2.Text = Conv(8, 16, tb_2.Text);
+                        if (!changeDec_2) txtDec_2.Text = Conv(8, 10, tb_2.Text);
+
+                    }; break;
+                case "txtHex_2":
+                    {
+
+                        if (!changeBin_2) txtBin_2.Text = Conv(16, 2, tb_2.Text);
+                        if (!changeOct_2) txtOct_2.Text = Conv(16, 8, tb_2.Text);
+                        if (!changeDec_2) txtDec_2.Text = Conv(16, 10, tb_2.Text);
+
+                    }; break;
+                case "txtDec_2":
+                    {
+
+                        if (!changeBin_2) txtBin_2.Text = Conv(10, 2, tb_2.Text);
+                        if (!changeHex_2) txtHex_2.Text = Conv(10, 16, tb_2.Text);
+                        if (!changeOct_2) txtOct_2.Text = Conv(10, 8, tb_2.Text);
 
                     }; break;
             }
-        }
-
-        private void LblDec_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void Label1_Click(object sender, EventArgs e)
+        private void BtnSum_Click(object sender, EventArgs e)
         {
+            if (txtBin_1.Text != string.Empty && txtBin_2.Text != string.Empty)
+            {
+                int n1, n2;
+                n1 = Convert.ToInt32(txtBin_1.Text, 2);
+                n2 = Convert.ToInt32(txtBin_2.Text, 2);
+                txtBinRes.Text = Convert.ToString(n1 + n2, 2);
+            }
+        }
 
+        private void BtnDiv_Click(object sender, EventArgs e)
+        {
+            if (txtBin_1.Text != string.Empty && txtBin_2.Text != string.Empty)
+            {
+                int n1, n2;
+                n1 = Convert.ToInt32(txtBin_1.Text, 2);
+                n2 = Convert.ToInt32(txtBin_2.Text, 2);
+                txtBinRes.Text = Convert.ToString(n1 - n2, 2);
+            }
+        }
+
+        private void BtnExp_Click(object sender, EventArgs e)
+        {
+            if (txtBin_1.Text != string.Empty && txtBin_2.Text != string.Empty)
+            {
+                int n1, n2;
+                n1 = Convert.ToInt32(txtBin_1.Text, 2);
+                n2 = Convert.ToInt32(txtBin_2.Text, 2);
+                txtBinRes.Text = Convert.ToString(n1 * n2, 2);
+            }
+        }
+
+        private void BtnDelen_Click(object sender, EventArgs e)
+        {
+            if (txtBin_1.Text != string.Empty && txtBin_2.Text != string.Empty)
+            {
+                int n1, n2;
+                n1 = Convert.ToInt32(txtBin_1.Text, 2);
+                n2 = Convert.ToInt32(txtBin_2.Text, 2);
+                txtBinRes.Text = Convert.ToString(n1 / n2, 2);
+            }
         }
     }
 }
