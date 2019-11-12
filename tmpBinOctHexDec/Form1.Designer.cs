@@ -233,7 +233,7 @@
             this.btnDiv.TabIndex = 21;
             this.btnDiv.Text = "Разность";
             this.btnDiv.UseVisualStyleBackColor = true;
-            this.btnDiv.Click += new System.EventHandler(this.BtnDiv_Click);
+            this.btnDiv.Click += new System.EventHandler(this.BtnSubtract_Click);
             // 
             // btnExp
             // 
